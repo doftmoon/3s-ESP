@@ -1,5 +1,4 @@
 //конечный автомат
-
 const int LEDrot=12;
 const int LEDgelb=11;
 const int LEDgruen=10;
