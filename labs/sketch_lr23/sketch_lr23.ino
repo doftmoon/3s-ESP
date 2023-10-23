@@ -37,8 +37,8 @@
  */
 #include <LiquidCrystal.h>
 #define analogPin      0          // analog pin for measuring capacitor voltage
-#define chargePin      13         // pin to charge the capacitor - connected to one end of the charging resistor
-#define dischargePin   11         // pin to discharge the capacitor
+#define chargePin      7        // pin to charge the capacitor - connected to one end of the charging resistor
+#define dischargePin   6         // pin to discharge the capacitor
 #define resistorValue  10000.0F   // change this to whatever resistor value you are using
 
                                   // F formatter tells compiler it's a floating point value
@@ -76,7 +76,8 @@ void loop(){
 
   if (microFarads > 1){
 
-    lcd.print((long)microFarads);       // print the value to serial port
+    lcd.print(String(microFarads));  
+    lcd.setCursor(0, (String(microFarads).length() % 16));
 
     lcd.print(" mF");         // print units and carriage return
 
@@ -92,7 +93,8 @@ void loop(){
 
     nanoFarads = microFarads * 1000.0;      // multiply by 1000 to convert to nanoFarads (10^-9 Farads)
 
-    lcd.print((long)nanoFarads);         // print the value to serial port
+    lcd.print(String(nanoFarads));         // print the value to serial port
+    lcd.setCursor(0, (String(nanoFarads).length() % 16));
 
     lcd.print(" nF");          // print units and carriage return
 

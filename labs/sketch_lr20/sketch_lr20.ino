@@ -5,9 +5,11 @@
 // Параметр конкретного типа термистора (из datasheet):
 #define TERMIST_B 4300
 #define VIN 5.0
+const int PEZO=12;
 
 void setup()
 {
+  pinMode(PEZO, OUTPUT);
  for (int i = 0; i < LED_COUNT; ++i)
  pinMode(i + FIRST_LED_PIN, OUTPUT);
 }
@@ -26,7 +28,12 @@ void loop()
  for (int i = 0; i < LED_COUNT; ++i) {
  // при 21°С должен гореть один сегмент, при 22°С — два и
  // т.д. Определяем должен ли гореть i-й нехитрым способом
- boolean enableSegment = (temperature >= 21+i);
+ boolean enableSegment = (temperature >= 0+(i*5);
  digitalWrite(i + FIRST_LED_PIN, enableSegment);
  }
+  if (temprature = 25) {
+    digitalWrite(PEZO, HIGH);
+  } else {
+    digitalWrite(PEZO, LOW);
+  }
 }

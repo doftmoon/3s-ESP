@@ -1,5 +1,7 @@
 #include <Servo.h>
 
+const int MAX_L=900;
+const int MIN_L=200;
 const int FR=0;
 int val;
 int angle;

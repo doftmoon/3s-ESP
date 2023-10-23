@@ -3,7 +3,7 @@ const int LEDrot=12;
 const int LEDgelb=11;
 const int LEDgruen=10;
 int cnt=0;
-int state=0;
+int state=1;
 char mode;
 
 void setup() {
@@ -19,17 +19,29 @@ void loop() {
   mode = Serial.read();
   
   State(mode);
-  delay(11111);
+  delay(100);
   }
 
-  // if (mode == "N")
-  // cnt++;
-  // if(cnt==100) {
-  //   cnt=0;
-  //   Statemaschine();
-  // }
+  if (mode == 'N') {
+    cnt++;
+    if(cnt==100) {
+      cnt=0;
+      Statemaschine();
+    }
+  }
+  
+  if (mode == 'S') {
+    delay(280);
+    digitalWrite(LEDrot, LOW);
+    digitalWrite(LEDgelb, HIGH);
+    digitalWrite(LEDgruen, LOW);
+    delay(300);
+    digitalWrite(LEDrot, LOW);
+    digitalWrite(LEDgelb, LOW);
+    digitalWrite(LEDgruen, LOW);
+  }
 
-  // delay(10);
+  delay(10);
 }
 
 void State(char mode) {
@@ -48,17 +60,14 @@ void State(char mode) {
       Serial.println("Включён режим green");
       break;
     }
+    default :{
+      break;
+    }
   }
 }
 
 void Statemaschine(void) {
   switch(state) {
-    case 0: {
-      digitalWrite(LEDrot, LOW);
-      digitalWrite(LEDgelb, LOW);
-      digitalWrite(LEDgruen, LOW);
-      break;
-    }
     case 1: {
       digitalWrite(LEDrot, HIGH);
       digitalWrite(LEDgelb, LOW);
