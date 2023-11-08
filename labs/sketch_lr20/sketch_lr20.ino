@@ -28,10 +28,10 @@ void loop()
  for (int i = 0; i < LED_COUNT; ++i) {
  // при 21°С должен гореть один сегмент, при 22°С — два и
  // т.д. Определяем должен ли гореть i-й нехитрым способом
- boolean enableSegment = (temperature >= 0+(i*5);
+ boolean enableSegment = (temperature >= 0+(i*5));
  digitalWrite(i + FIRST_LED_PIN, enableSegment);
  }
-  if (temprature = 25) {
+  if (temperature = 25) {
     digitalWrite(PEZO, HIGH);
   } else {
     digitalWrite(PEZO, LOW);
